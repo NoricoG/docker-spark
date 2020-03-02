@@ -14,63 +14,14 @@ services:
     volumes:
        - /home/shared/spark-apps:/home/shared/spark-apps
        - /home/shared/spark-data:/home/shared/spark-data
-  spark-worker-1:
+  spark-worker:
     image: bde2020/spark-worker:2.4.5-hadoop2.7
-    container_name: spark-worker-1
     depends_on:
       - spark-master
-    ports:
-      - "8081:8081"
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
     networks:
       spark-network:
-        ipv4_address: 10.5.0.3
-    volumes:
-       - /home/shared/spark-apps:/home/shared/spark-apps
-       - /home/shared/spark-data:/home/shared/spark-data
-  spark-worker-2:
-    image: bde2020/spark-worker:2.4.5-hadoop2.7
-    container_name: spark-worker-2
-    depends_on:
-      - spark-master
-    ports:
-      - "8082:8081"
-    environment:
-      - "SPARK_MASTER=spark://spark-master:7077"
-    networks:
-      spark-network:
-        ipv4_address: 10.5.0.4
-    volumes:
-       - /home/shared/spark-apps:/home/shared/spark-apps
-       - /home/shared/spark-data:/home/shared/spark-data
-  spark-worker-3:
-    image: bde2020/spark-worker:2.4.5-hadoop2.7
-    container_name: spark-worker-3
-    depends_on:
-      - spark-master
-    ports:
-      - "8083:8081"
-    environment:
-      - "SPARK_MASTER=spark://spark-master:7077"
-    networks:
-      spark-network:
-        ipv4_address: 10.5.0.5
-    volumes:
-       - /home/shared/spark-apps:/home/shared/spark-apps
-       - /home/shared/spark-data:/home/shared/spark-data
-  spark-worker-4:
-    image: bde2020/spark-worker:2.4.5-hadoop2.7
-    container_name: spark-worker-4
-    depends_on:
-      - spark-master
-    ports:
-      - "8084:8081"
-    environment:
-      - "SPARK_MASTER=spark://spark-master:7077"
-    networks:
-      spark-network:
-        ipv4_address: 10.5.0.6
     volumes:
        - /home/shared/spark-apps:/home/shared/spark-apps
        - /home/shared/spark-data:/home/shared/spark-data
